@@ -27,12 +27,12 @@ Instale e rode um broker MQTT (ex: Mosquitto) com o arquivo de configuração da
    ```
 
 ### Subscribers
-As classes `LightSubscriber` e `DoorSubscriber` são clientes MQTT que se conectam ao broker e inscrevem-se em um tópico específico para receber comandos relacionados a uma dispositivos inteligentes.
+As classes Subscriber são clientes MQTT que se conectam ao broker e inscrevem-se em um tópico específico para receber comandos relacionados a uma dispositivos inteligentes.
 
    **Funcionamento:**
    1. **Carregamento de configurações**: Lê as propriedades MQTT do arquivo `mqtt.properties` (broker URL, ID do cliente e tópico).
    2. **Conexão ao broker**: Estabelece uma conexão com o broker MQTT usando o cliente Paho.
-   3. **Inscrição em tópico**: Inscreve-se no tópico de luz (`mqtt.topic.light`) ou porta (`mqtt.topic.light`) para ouvir comandos.
+   3. **Inscrição em tópico**: Inscreve-se no tópico correspondente para ouvir comandos.
    4. **Processamento de mensagens**: Ao receber mensagens no tópico:
       *Exemplo: Lâmpada*
       - Se o comando for `"ON"`: exibe "Lâmpada ligada!"

@@ -5,5 +5,6 @@ public class App {
 		System.out.println("Smart Home MQTT Application");
 		DoorSubscriber.run();
 		LightSubscriber.run();
+		TempSubscriber.run();
 	}
 }

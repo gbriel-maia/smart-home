@@ -25,9 +25,17 @@ public class DoorSubscriber {
             String command = new String(msg.getPayload());
             System.out.println("Comando recebido: " + command);
             if ("LOCK".equalsIgnoreCase(command)) {
-                System.out.println("Porta trancada!");
+                command = "Porta trancada!";
             } else if ("UNLOCK".equalsIgnoreCase(command)) {
-                System.out.println("Porta destrancada!");
+                command = "Porta destrancada!";
+            }
+
+            try {
+                ResponsePublisher publisher = new ResponsePublisher();
+                publisher.publishResponse(command);
+                publisher.disconnect();
+            } catch (Exception e) {
+                System.err.println("Erro ao enviar resposta: " + e.getMessage());
             }
         });
 

@@ -25,9 +25,17 @@ public class LightSubscriber {
             String command = new String(msg.getPayload());
             System.out.println("Comando recebido: " + command);
             if ("ON".equalsIgnoreCase(command)) {
-                System.out.println("Lâmpada ligada!");
+                command = "Lâmpada ligada!";
             } else if ("OFF".equalsIgnoreCase(command)) {
-                System.out.println("Lâmpada desligada!");
+                command = "Lâmpada desligada!";
+            }
+
+            try {
+                ResponsePublisher publisher = new ResponsePublisher();
+                publisher.publishResponse(command);
+                publisher.disconnect();
+            } catch (Exception e) {
+                System.err.println("Erro ao enviar resposta: " + e.getMessage());
             }
         });
 
